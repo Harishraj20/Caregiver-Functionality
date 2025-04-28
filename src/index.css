@@ -1,0 +1,155 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.caregiver-activity-list {
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.activity-container {
+  background-color: #f0f0f0;
+  height: 85%;
+  width: 60%;
+  border-radius: 10px;
+}
+
+.caregiver-activity-list .caregiver-activities {
+  height: 66%;
+  padding: 0% 8%;
+  border-radius: 8px;
+  overflow-y: auto;
+}
+
+.caregiver-activity-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.caregiver-activity-list th,
+.caregiver-activity-list td {
+  font-size: large;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.caregiver-title,
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.caregiver-activity-list th {
+  color: #e7e7e7;
+  background-color: #777;
+}
+
+.caregiver-title {
+  font-size: larger;
+  font-weight: bolder;
+  margin: 3% 0% 2% 2%;
+  height: 5%;
+}
+
+th:nth-child(3) {
+  width: 10%;
+}
+
+th:nth-child(4) {
+  width: 25%;
+}
+
+th:nth-child(2) {
+  width: 35%;
+}
+
+th:nth-child(1) {
+  width: 30%;
+}
+
+.pagnation-section {
+  height: 4%;
+  width: 94%;
+  margin: 1%;
+}
+
+.back-btn {
+  height: 3%;
+  margin: 2% 2% 2% 2%;
+}
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.back-btn button {
+  border: none;
+  background: none;
+  padding: 1% 2%;
+  border-radius: 6%;
+  background-color: #fd9515;
+  font-size: large;
+  cursor: pointer;
+}
+
+.search-bar {
+  width: 100%;
+  height: 10%;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 90%;
+  height: 5%;
+  margin: 0% 0% 2% 2%;
+}
+
+.search-bar label {
+  font-style: italic;
+  font-size: 16px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+#search-field {
+  padding: 8px 10px;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+}
