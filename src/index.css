@@ -44,7 +44,7 @@ body,
 }
 
 .caregiver-activity-list .caregiver-activities {
-  height: 66%;
+  height: 65%;
   padding: 0% 8%;
   border-radius: 8px;
   overflow-y: auto;
@@ -137,7 +137,7 @@ tr:hover {
   justify-content: flex-end;
   width: 90%;
   height: 5%;
-  margin: 0% 0% 2% 2%;
+  margin: 0% 0% 3% 2%;
 }
 
 .search-bar label {
