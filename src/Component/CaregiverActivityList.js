@@ -59,24 +59,6 @@ function CaregiverActivityList({
       status: "Completed",
       time: "11:00 AM",
     },
-    {
-      clientName: "Client1",
-      taskName: "Task1",
-      status: "Completed",
-      time: "04/28/2025 03:22:46 AM",
-    },
-    {
-      clientName: "Client2",
-      taskName: "Task2",
-      status: "Completed",
-      time: "10:00 AM",
-    },
-    {
-      clientName: "Client3",
-      taskName: "Task3",
-      status: "Completed",
-      time: "11:00 AM",
-    },
   ],
   closeModal,
 }) {
@@ -104,19 +86,13 @@ function CaregiverActivityList({
     setFilteredActivityList(filteredResult);
   };
 
-  const startIndex = (currentPage - 1) * recordsPerPage;
-  const currentData = filteredActivityList.slice(
-    startIndex,
-    startIndex + recordsPerPage
-  );
-
-  useEffect(()=>{
+  useEffect(() => {
     const startIndex = (currentPage - 1) * recordsPerPage;
-  const currentData = filteredActivityList.slice(
-    startIndex,
-    startIndex + recordsPerPage
-  );
-  },[currentPage])
+    const currentData = initialActivityList.slice(
+      startIndex,
+      startIndex + recordsPerPage
+    );
+  }, [currentPage]);
 
   return (
     <div className="caregiver-activity-list">
@@ -144,14 +120,14 @@ function CaregiverActivityList({
               </tr>
             </thead>
             <tbody>
-              {currentData.length === 0 ? (
+              {filteredActivityList.length === 0 ? (
                 <tr>
                   <td colSpan="4" style={{ textAlign: "center" }}>
                     No data available
                   </td>
                 </tr>
               ) : (
-                currentData.map((data, index) => (
+                filteredActivityList.map((data, index) => (
                   <tr key={index}>
                     <td>{data.clientName}</td>
                     <td>{data.taskName}</td>
@@ -170,7 +146,7 @@ function CaregiverActivityList({
           </div>
           <Pagination
             currentPage={currentPage}
-            totalPages={Math.ceil(filteredActivityList.length / recordsPerPage)}
+            totalPages={Math.ceil(initialActivityList.length / recordsPerPage)}
             onPageChange={setCurrentPage}
           />
         </div>
