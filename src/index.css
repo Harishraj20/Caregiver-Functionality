@@ -37,17 +37,19 @@ body,
 }
 
 .activity-container {
+  position: relative;
   background-color: #f0f0f0;
   height: 85%;
-  width: 60%;
+  width: 70%;
   border-radius: 10px;
 }
 
 .caregiver-activity-list .caregiver-activities {
   height: 65%;
-  padding: 0% 8%;
+  padding: 0% 3%;
   border-radius: 8px;
   overflow-y: auto;
+  margin-bottom: 2%;
 }
 
 .caregiver-activity-list table {
@@ -59,18 +61,18 @@ body,
 .caregiver-activity-list td {
   font-size: large;
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 6px;
   text-align: left;
 }
 
-.caregiver-title,
-.back-btn {
+.caregiver-title {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .caregiver-activity-list th {
+  cursor: pointer;
   color: #e7e7e7;
   background-color: #777;
 }
@@ -79,23 +81,23 @@ body,
   font-size: larger;
   font-weight: bolder;
   margin: 3% 0% 2% 2%;
-  height: 5%;
+  height: 3%;
 }
 
-th:nth-child(3) {
-  width: 10%;
+.caregiver-activity-list th:nth-child(3) {
+  width: 11%;
 }
 
-th:nth-child(4) {
-  width: 25%;
+.caregiver-activity-list th:nth-child(4) {
+  width: 20%;
 }
 
-th:nth-child(2) {
-  width: 35%;
+.caregiver-activity-list th:nth-child(2) {
+  width: 32%;
 }
 
-th:nth-child(1) {
-  width: 30%;
+.caregiver-activity-list th:nth-child(1) {
+  width: 27%;
 }
 
 .pagnation-section {
@@ -104,10 +106,11 @@ th:nth-child(1) {
   margin: 1%;
 }
 
-.back-btn {
+/* .back-btn {
   height: 3%;
   margin: 2% 2% 2% 2%;
-}
+} */
+
 tr:nth-child(even) {
   background-color: #f9f9f9;
 }
@@ -119,8 +122,8 @@ tr:hover {
 .back-btn button {
   border: none;
   background: none;
-  padding: 1% 2%;
-  border-radius: 6%;
+  padding: 4px 8px;
+  border-radius: 10%;
   background-color: #fd9515;
   font-size: large;
   cursor: pointer;
@@ -136,7 +139,7 @@ tr:hover {
   align-items: center;
   justify-content: flex-end;
   width: 90%;
-  height: 5%;
+  height: 3%;
   margin: 0% 0% 3% 2%;
 }
 
@@ -152,4 +155,98 @@ tr:hover {
   font-size: 18px;
   border: 2px solid #ccc;
   border-radius: 20px;
+}
+
+.pagination-container {
+  display: flex;
+  align-items: center;
+}
+
+.page-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85%;
+  font-size: large;
+  padding: 5px 15px;
+  margin: 0px 15px;
+  cursor: pointer;
+}
+
+.page-number.active {
+  background-color: #fd9515;
+  color: black;
+  border-radius: 15%;
+  display: flex;
+  align-items: center;
+}
+
+.pagination-section {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination-arrow.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pagination-arrow {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.pagination-arrow img {
+  width: 24px;
+  height: 24px;
+}
+
+#pagination-arrow-right {
+  cursor: pointer !important;
+}
+
+.search-bar-cg-reports {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 85%;
+  height: 5%;
+  margin: 0% 0% 1% 2%;
+}
+
+.search-bar-cg-reports label {
+  font-style: italic;
+  font-size: 16px;
+  margin-right: 15px;
+  font-weight: bold;
+}
+.close-png {
+  position: absolute;
+  top: 35px;
+  right: 55px;
+  z-index: 100000;
+  background-color: #3a3939;
+  border-radius: 50%;
+}
+th {
+  cursor: pointer;
+}
+.pagination-section {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+
+.back-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pagination-section > .pagination-container {
+  margin-right: 3%;
 }
