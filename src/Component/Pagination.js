@@ -17,7 +17,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
 
   const renderPageNumbers = () => {
     const pageNumbers = [];
-    const totalPagesToShow = 10;
+    const totalPagesToShow = 5;
     const startPage = Math.floor((currentPage - 1) / totalPagesToShow) * totalPagesToShow + 1;
     const endPage = Math.min(startPage + totalPagesToShow - 1, totalPages);
 

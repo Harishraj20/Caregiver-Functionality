@@ -168,7 +168,7 @@ tr:hover {
   justify-content: center;
   height: 85%;
   font-size: large;
-  padding: 5px 15px;
+  padding: 5px 5px;
   margin: 0px 15px;
   cursor: pointer;
 }
@@ -224,6 +224,7 @@ tr:hover {
   font-weight: bold;
 }
 .close-png {
+  cursor: pointer;
   position: absolute;
   top: 35px;
   right: 55px;
