@@ -1,8 +1,6 @@
 import React from "react";
-import rightPNG from "../Assets/arrow.png";
-import leftPNG from "../Assets/Left.png";
 
-function Pagination({ currentPage, totalPages, onPageChange }) {
+function Pagination({ currentPage, totalPages = 10, onPageChange, searchval }) {
   const goToPreviousPage = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
@@ -18,12 +16,17 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
   const renderPageNumbers = () => {
     const pageNumbers = [];
     const totalPagesToShow = 5;
-    const startPage = Math.floor((currentPage - 1) / totalPagesToShow) * totalPagesToShow + 1;
+    const startPage =
+      Math.floor((currentPage - 1) / totalPagesToShow) * totalPagesToShow + 1;
     const endPage = Math.min(startPage + totalPagesToShow - 1, totalPages);
 
     if (startPage > 1) {
       pageNumbers.push(
-        <div className="page-number ellipsis" key="ellipsis-left" onClick={goToPreviousPage}>
+        <div
+          className="page-number ellipsis"
+          key="ellipsis-left"
+          onClick={goToPreviousPage}
+        >
           ...
         </div>
       );
@@ -43,7 +46,11 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
 
     if (endPage < totalPages) {
       pageNumbers.push(
-        <div className="page-number ellipsis" key="ellipsis-right" onClick={goToNextPage}>
+        <div
+          className="page-number ellipsis"
+          key="ellipsis-right"
+          onClick={goToNextPage}
+        >
           ...
         </div>
       );
@@ -53,19 +60,31 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
   };
 
   return (
-    <div className="pagination-container">
-      <div
-        onClick={goToPreviousPage}
-        className={`pagination-arrow ${currentPage === 1 ? "disabled" : ""}`}
-      >
-        <img src={leftPNG} alt="Previous" />
-      </div>
-      {renderPageNumbers()}
-      <div
-        className={`pagination-arrow ${currentPage === totalPages ? "disabled" : ""}`}
-        onClick={goToNextPage}
-      >
-        <img src={rightPNG} alt="Next" />
+    <div className="pagination-holder">
+      <div className="pagination-container">
+        <div className="table-info">
+          showing 1 to 10 of 53 entries {searchval ? "from pagination" : ""}
+        </div>
+        <div className="pagination-wrapper">
+          <div
+            onClick={goToPreviousPage}
+            className={`pagination-arrow ${
+              currentPage === 1 ? "disabled" : ""
+            }`}
+          >
+            previous
+          </div>
+          {renderPageNumbers()}
+          <div
+            className={`pagination-arrow ${
+              currentPage === totalPages ? "disabled" : ""
+            }`}
+            onClick={goToNextPage}
+          >
+            {" "}
+            next
+          </div>
+        </div>
       </div>
     </div>
   );

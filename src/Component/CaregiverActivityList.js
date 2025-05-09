@@ -2,84 +2,14 @@ import React, { useEffect, useState } from "react";
 import Search from "./Search";
 import Pagination from "./Pagination";
 import closePNG from "../Assets/new.png";
-import { sortData, renderSortArrow } from "../Utils/utils";
+import { sortData, renderSortArrow, extractTime } from "../Utils/utils";
 
 function CaregiverActivityList({
-  initialActivityList = [
-    {
-      clientName: "Client1",
-      taskName: "Task1",
-      status: "Completed",
-      time: "12.04.2024 07:30 AM",
-    },
-    {
-      clientName: "Client2",
-      taskName: "Task2",
-      status: "Completed",
-      time: "12.04.2024 08:30 AM",
-    },
-    {
-      clientName: "Client3",
-      taskName: "Task3",
-      status: "Completed",
-      time: "12.04.2024 06:00 PM",
-    },
-    {
-      clientName: "Client1",
-      taskName: "Task1",
-      status: "Completed",
-      time: "12.04.2024 12:30 PM",
-    },
-    {
-      clientName: "Client2",
-      taskName: "Task2",
-      status: "Completed",
-      time: "12.04.2024 10:37 AM",
-    },
-    {
-      clientName: "Client3",
-      taskName: "Task3",
-      status: "Completed",
-      time: "12.04.2024 11:30 AM",
-    },
-    {
-      clientName: "Client1",
-      taskName: "Task1",
-      status: "Completed",
-      time: "12.04.2024 09:30 PM",
-    },
-    {
-      clientName: "Client2",
-      taskName: "Task2",
-      status: "Completed",
-      time: "12.04.2024 09:00 AM",
-    },
-    {
-      clientName: "Client3",
-      taskName: "Task3",
-      status: "Completed",
-      time: "12.04.2024 03:30 PM",
-    },
-    {
-      clientName: "Client31",
-      taskName: "Task3",
-      status: "Completed",
-      time: "12.04.2024 08:00 AM",
-    },
-    {
-      clientName: "Client13",
-      taskName: "Task3",
-      status: "Completed",
-      time: "12.04.2024 06:30 AM",
-    },
-    {
-      clientName: "Client13",
-      taskName: "Task3",
-      status: "Completed",
-      time: "12.04.2024 06:30 AM",
-    },
-  ],
+  activityList,
   closeModal,
+  caregiverName,
+  checkInDate,
+  checkOutDate,
 }) {
   const [filteredActivityList, setFilteredActivityList] = useState([]);
   const [searchValue, setSearchValue] = useState("");
@@ -88,19 +18,19 @@ function CaregiverActivityList({
     order: "asc",
     column: "",
   });
+  const [records,totalRecords] = useState('');
   const recordsPerPage = 10;
 
   const handleSearchChange = (value) => {
     setSearchValue(value);
     if (!value) {
-      const data = fetchRecords(currentPage, initialActivityList);
+      const data = fetchRecords(currentPage, activityList);
       setFilteredActivityList(data);
       return;
     }
 
-    const filteredResult = initialActivityList.filter(
+    const filteredResult = activityList.filter(
       (item) =>
-        item.clientName.toLowerCase().includes(value.toLowerCase()) ||
         item.taskName.toLowerCase().includes(value.toLowerCase())
     );
 
@@ -120,12 +50,12 @@ function CaregiverActivityList({
   };
 
   useEffect(() => {
-    const data = fetchRecords(currentPage, initialActivityList);
+    const data = fetchRecords(currentPage, activityList);
     setFilteredActivityList(data);
   }, []);
 
   useEffect(() => {
-    const data = fetchRecords(currentPage, initialActivityList);
+    const data = fetchRecords(currentPage, activityList);
     setFilteredActivityList(data);
   }, [currentPage]);
   const fetchRecords = (currentPage, data) => {
@@ -134,7 +64,7 @@ function CaregiverActivityList({
     return pageData;
   };
 
-  const totalPages = Math.ceil(initialActivityList.length / recordsPerPage);
+  const totalPages = Math.ceil(activityList.length / recordsPerPage);
 
   return (
     <div className="caregiver-activity-list">
@@ -146,18 +76,38 @@ function CaregiverActivityList({
       />
       <div className="activity-container">
         <p className="caregiver-title">CAREGIVER ACTIVITIES</p>
-        <Search
-          className="search-bar"
-          value={searchValue}
-          onChangeFunction={(e) => handleSearchChange(e.target.value)}
-        />
+
+        <div className="param-container">
+          <div className="caregiver-name">
+            <b>
+              <i>Caregiver Name: </i>
+            </b>
+            {caregiverName}
+          </div>
+          <div className="checkin-date">
+            <b>
+              <i> Check-In Time: </i>
+            </b>
+            {extractTime(checkInDate)}
+          </div>
+          <div className="checkout-date">
+            <b>
+              <i> Check-Out Time: </i>
+            </b>
+            {extractTime(checkOutDate)}
+          </div>
+
+          <Search
+            className="search-bar"
+            value={searchValue}
+            onChangeFunction={(e) => handleSearchChange(e.target.value)}
+          />
+        </div>
+
         <div className="caregiver-activities">
           <table>
             <thead>
               <tr>
-                <th onClick={() => handleSort("clientName")}>
-                  Client Name{renderSortArrow("clientName", sortConfig)}
-                </th>
                 <th onClick={() => handleSort("taskName")}>
                   Task{renderSortArrow("taskName", sortConfig)}
                 </th>
@@ -173,16 +123,15 @@ function CaregiverActivityList({
               {filteredActivityList.length === 0 ? (
                 <tr>
                   <td colSpan="4" style={{ textAlign: "center" }}>
-                    No data available
+                    No Task Available
                   </td>
                 </tr>
               ) : (
                 filteredActivityList.map((data, index) => (
                   <tr key={index}>
-                    <td>{data.clientName}</td>
                     <td>{data.taskName}</td>
                     <td>{data.status}</td>
-                    <td>{data.time}</td>
+                    <td>{data.statusTime}</td>
                   </tr>
                 ))
               )}
@@ -194,7 +143,7 @@ function CaregiverActivityList({
           <div className="back-btn">
             <button onClick={closeModal}>Back</button>
           </div>
-          {initialActivityList.length > recordsPerPage && (
+          {activityList.length > recordsPerPage && (
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}

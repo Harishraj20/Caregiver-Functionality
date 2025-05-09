@@ -7,7 +7,6 @@ function Search({ value, onChangeFunction, className }) {
       <input
         type="text"
         id="search-field"
-        placeholder="search"
         value={value}
         onChange={onChangeFunction}
       />
