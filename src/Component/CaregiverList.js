@@ -991,6 +991,22 @@ const CaregiverList = () => {
       clientID: 14,
       clientName: "Mr. 12, Client",
     },
+    ,
+    {
+      caregiverName: "Rani, Deepak",
+      checkInDate: "05/08/2025 09:45:00 AM",
+      checkOutDate: "05/08/2025 01:10:15 PM",
+      clientID: 14,
+      clientName: "Mr. 12, Client",
+    },
+    ,
+    {
+      caregiverName: "Rani, Deepak",
+      checkInDate: "05/08/2025 09:45:00 AM",
+      checkOutDate: "05/08/2025 01:10:15 PM",
+      clientID: 14,
+      clientName: "Mr. 12, Client",
+    },
   ]);
   const [isOpen, setIsOpen] = useState(false);
   const [activityList, setActivityList] = useState([]);
@@ -1029,30 +1045,30 @@ const CaregiverList = () => {
 
   const handleSearchChange = (value) => {
     setSearchValue(value);
-  
+
     if (!value) {
       setFilteredCaregiverList(caregiverList);
       setCurrentPage(1);
       return;
     }
-  
+
     const lowerValue = value.toLowerCase();
-  
+
     const filteredResult = caregiverList.filter((item) => {
       const nameMatch =
         item.caregiverName.toLowerCase().includes(lowerValue) ||
         item.clientName.toLowerCase().includes(lowerValue);
-        const dateMatch =
+      const dateMatch =
         item.checkInDate.includes(value) ||
         (item.checkOutDate && item.checkOutDate.includes(value));
-  
+
       return nameMatch || dateMatch;
     });
-  
+
     setFilteredCaregiverList(filteredResult);
     setCurrentPage(1);
   };
-  
+
   const handleViewClick = (
     activities,
     caregiverName,
@@ -1079,16 +1095,18 @@ const CaregiverList = () => {
     setCurrentPage(1);
     setSortConfig({ column, order: newOrder });
   };
-
-  const indexOfLastRecord = currentPage * recordsPerPage;
-  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const indexOfLastRecord = Math.min(
+    currentPage * recordsPerPage,
+    filteredCaregiverList.length
+  );
+  const indexOfFirstRecord = Math.max(indexOfLastRecord - recordsPerPage, 0);
   const currentRecords = filteredCaregiverList.slice(
     indexOfFirstRecord,
     indexOfLastRecord
   );
-  console.log("last Index: ",indexOfLastRecord);
-  console.log("Index of the First Record: ",indexOfFirstRecord);
-  console.log("Index of current records: ",currentRecords);
+  console.log("last Index: ", indexOfLastRecord);
+  console.log("Index of the First Record: ", indexOfFirstRecord);
+  console.log("Index of current records: ", currentRecords);
   const totalPages = Math.ceil(filteredCaregiverList.length / recordsPerPage);
 
   return (
@@ -1205,14 +1223,15 @@ const CaregiverList = () => {
         </table>
       </div>
 
-       (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={(page) => setCurrentPage(page)}
-          searchVal = {searchValue}
-        />
-      )
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={(page) => setCurrentPage(page)}
+        searchVal={searchValue}
+        firstIndex={indexOfFirstRecord}
+        lastIndex={indexOfLastRecord}
+        totalRecords={filteredCaregiverList.length}
+      />
 
       {isOpen && (
         <CaregiverActivityList

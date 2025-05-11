@@ -1,6 +1,6 @@
 import React from "react";
 
-function Pagination({ currentPage, totalPages = 10, onPageChange, searchval }) {
+function Pagination({ currentPage, totalPages = 10, onPageChange, searchval,firstIndex,lastIndex,totalRecords,name }) {
   const goToPreviousPage = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
@@ -61,10 +61,15 @@ function Pagination({ currentPage, totalPages = 10, onPageChange, searchval }) {
 
   return (
     <div className="pagination-holder">
-      <div className="pagination-container">
+      <div className={`pagination-container ${name}`}>
         <div className="table-info">
-          showing 1 to 10 of 53 entries {searchval ? "from pagination" : ""}
+          showing {firstIndex+1} to {lastIndex} of {totalRecords} entries {searchval?"search":""}
         </div>
+        {
+            name=="activities"? <div className="back-btn">
+            <button>Back</button>
+          </div> :""
+          }
         <div className="pagination-wrapper">
           <div
             onClick={goToPreviousPage}
@@ -74,6 +79,7 @@ function Pagination({ currentPage, totalPages = 10, onPageChange, searchval }) {
           >
             previous
           </div>
+          
           {renderPageNumbers()}
           <div
             className={`pagination-arrow ${

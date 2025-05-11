@@ -67,7 +67,7 @@ body,
 
 .caregiver-activity-list th,
 .caregiver-activity-list td {
-  font-size: large;
+  font-size: 12px;
   border: 1px solid #ccc;
   padding: 6px;
   text-align: left;
@@ -86,7 +86,7 @@ body,
 }
 
 .caregiver-title {
-  font-size: larger;
+  font-size: 12px;
   font-weight: bolder;
   margin: 3% 0% 2% 2%;
   height: 3%;
@@ -99,6 +99,7 @@ body,
   height: 5%;
   margin: 0% 0% 2% 3%;
 }
+
 
 .caregiver-activity-list th:nth-child(3) {
   width: 11%;
@@ -141,19 +142,19 @@ tr:hover {
   padding: 4px 8px;
   border-radius: 10%;
   background-color: #fd9515;
-  font-size: large;
+  font-size: 12px;
   cursor: pointer;
 }
 
 .search-bar {
   display: flex;
   align-items: center;
-  width: 28%;
+  /* width: 28%; */
 }
 
 .search-bar label {
   font-style: italic;
-  font-size: 16px;
+  font-size: 12px;
   margin-right: 10px;
   font-weight: bold;
 }
@@ -190,14 +191,14 @@ tr:hover {
 }
 
 .caregiver-name {
-  font-size: 18px;
+  font-size: 12px;
   width: 26%;
   margin-right: 2%;
 }
 
 .checkin-date,
 .checkout-date {
-  font-size: large;
+  font-size: 12px;
   width: 23%;
   margin-right: 5%;
 }
@@ -235,22 +236,12 @@ tr:hover {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: 91%;
+  width: 70%;
 }
 
 .search-bar-cg-reports label {
   font-size: 12px;
   margin-right: 15px;
-}
-
-.close-png {
-  cursor: pointer;
-  position: absolute;
-  top: 35px;
-  right: 55px;
-  z-index: 100000;
-  background-color: #3a3939;
-  border-radius: 50%;
 }
 
 th {
@@ -265,9 +256,7 @@ th {
 }
 
 .back-btn {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+width: 20%;
 }
 
 .pagination-section > .pagination-container {
@@ -349,7 +338,7 @@ th {
   }
 }
 .search-filter {
-  margin: 1%;
+  margin-bottom: 1%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -362,7 +351,7 @@ label.select-label {
   margin: 5px;
 }
 .search-holder {
-  width: 86%;
+  width: 85%;
   display: flex;
 }
 .table-info {
@@ -455,7 +444,14 @@ label.select-label {
   top: -10px;
   width: 20px;
   height: 20px;
-  margin: 0;
-  padding: 0;
-  line-height: 1;
+
+}
+.select-div {
+  width: 30%;
+  display: flex
+;
+  justify-content: flex-start;
+}
+.activities {
+  width: 93%;
 }

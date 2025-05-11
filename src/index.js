@@ -5,11 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import CaregiverActivityList from './Component/CaregiverActivityList';
 import Pagination from './Component/Pagination';
+import CaregiverList from './Component/CaregiverList';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <CaregiverList />
   </React.StrictMode>
 );
 

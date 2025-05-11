@@ -1,6 +1,6 @@
 import React from "react";
 
-function Search({ value, onChangeFunction, className }) {
+function Search({ value, onChangeFunction, className ,name}) {
   return (
     <div className={className}>
       <label htmlFor="search-field">Search: </label>
