@@ -1,5 +1,5 @@
 import "./App.css";
-import CaregiverList from "./Component/CaregiverList";
+import CaregiverList from "./pages/CaregiverList";
 
 function App() {
  return(

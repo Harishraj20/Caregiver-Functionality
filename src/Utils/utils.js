@@ -5,7 +5,6 @@ import sort_asc_disabled from "../Assets/sort_asc_disabled.png";
 import sort_desc_disabled from "../Assets/sort_desc_disabled.png";
 
 const parseDate = (dateStr) => {
-  console.log("The date str: ", dateStr);
   if (!dateStr) {
     return Number.POSITIVE_INFINITY;
   }
@@ -65,8 +64,8 @@ const sortData = (column, sortConfig, data) => {
   return { sortedList, newOrder };
 };
 
-//Utitiy function to display arrows
 
+//Utitiy function to display arrows
 const renderSortArrow = (key, sortConfig) => {
   return (
     <div className="sort-icons">
@@ -87,15 +86,13 @@ const renderSortArrow = (key, sortConfig) => {
 
 const extractTime = (dateTime) => {
   if (!dateTime) {
-    return "Not Yet";
+    return "-";
   }
   const splitArr = dateTime.split(" ");
-  console.log(splitArr);
   if (/^\d{2}:\d{2}:\d{2}$/.test(splitArr[1])) {
     const formatted = splitArr[1] + " " + splitArr[2];
     return formatted;
   }
-  console.log(dateTime);
   return dateTime;
 };
 

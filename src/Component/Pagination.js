@@ -1,6 +1,16 @@
 import React from "react";
 
-function Pagination({ currentPage, totalPages = 10, onPageChange, searchval,firstIndex,lastIndex,totalRecords,name }) {
+function Pagination({
+  currentPage,
+  totalPages = 10,
+  onPageChange,
+  firstIndex,
+  lastIndex,
+  totalRecords,
+  name,
+  searchval,totalValue,closeModal
+}) {
+
   const goToPreviousPage = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
@@ -62,14 +72,23 @@ function Pagination({ currentPage, totalPages = 10, onPageChange, searchval,firs
   return (
     <div className="pagination-holder">
       <div className={`pagination-container ${name}`}>
+        {totalValue>10 ?
+<div className="table-info">
+          showing {firstIndex + 1} to {lastIndex} of {totalRecords} entries{" "}
+          {searchval ? `(filtered from ${totalValue} total entries)` : ""}
+        </div>:""
+        }
         <div className="table-info">
-          showing {firstIndex+1} to {lastIndex} of {totalRecords} entries {searchval?"search":""}
+          showing {firstIndex + 1} to {lastIndex} of {totalRecords} entries{" "}
+          {searchval ? `(filtered from ${totalValue} total entries)` : ""}
         </div>
-        {
-            name=="activities"? <div className="back-btn">
-            <button>Back</button>
-          </div> :""
-          }
+        {name == "activities" ? (
+          <div className="back-btn">
+            <button onClick={closeModal}>Back</button>
+          </div>
+        ) : (
+          ""
+        )}
         <div className="pagination-wrapper">
           <div
             onClick={goToPreviousPage}
@@ -79,7 +98,7 @@ function Pagination({ currentPage, totalPages = 10, onPageChange, searchval,firs
           >
             previous
           </div>
-          
+
           {renderPageNumbers()}
           <div
             className={`pagination-arrow ${

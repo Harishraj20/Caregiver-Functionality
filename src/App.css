@@ -1,17 +1,6 @@
 .App {
   text-align: center;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 .close-png {
   cursor: pointer;
   position: absolute;
@@ -56,13 +45,13 @@ body,
   background-color: #777;
   border: 1px solid #ccc;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 14px;
 }
 .caregiver-info table td {
   padding: 6px;
   border: 1px solid #ccc;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   height: 10%;
 }
 
@@ -135,46 +124,111 @@ button.view-button {
     font-size: 14px;
   }
 }
-@media (min-width: 768px) and (max-width: 1200px) {
+@media (min-width: 768px) and (max-width: 1080px) {
   /* .search-holder {
     width: 92%;
 } */
-.select-div {
-  width: 31%;
-}
-.caregiver-info table th {
-  padding: 10px 5px;
-  font-size: 10px;
-}
-.caregiver-info table th:nth-child(4),
-.caregiver-info td:nth-child(4) {
-  width: 20%;
-}
-.caregiver-info table td {
-  padding: 5px;
-  font-size: 11px;
-}
-.sort-icons img {
-  position: absolute;
-  right: -5px;
-  top: -8px;
-  width: 15px;
-  height: 15px;
-
-}
-.activity-container {
-    height: 85%;
+  .select-div {
+    width: 31%;
+  }
+  .caregiver-info table th {
+    padding: 10px 5px;
+    font-size: 10px;
+  }
+  .caregiver-info table th:nth-child(4),
+  .caregiver-info td:nth-child(4) {
+    width: 20%;
+  }
+  .caregiver-info table td {
+    padding: 5px;
+    font-size: 11px;
+  }
+  .sort-icons img {
+    position: absolute;
+    right: -5px;
+    top: -8px;
+    width: 15px;
+    height: 15px;
+  }
+  .activity-container {
+    height: 70%;
     width: 90%;
-}
-.caregiver-activity-list .caregiver-activities {
-    height: 71%;
-}
-.close-png {
+  }
+  .caregiver-activity-list .caregiver-activities {
+    height: 67%;
+  }
+  .close-png {
     height: 28px;
     top: 20px;
     right: 13px;
     background-color: transparent;
-
+  }
+  .caregiver-name {
+    font-size: 13px;
+  }
+  .checkin-date,
+  .checkout-date {
+    font-size: 13px;
+  }
+  .caregiver-title {
+    font-size: 16px;
+  }
+  .caregiver-activity-list th,
+  .caregiver-activity-list td {
+    font-size: 13px;
+  }
 }
-
+@media (min-width: 1080px) and (max-width: 1440px) {
+  /* .search-holder {
+    width: 92%;
+} */
+  .select-div {
+    width: 31%;
+  }
+  .caregiver-info table th {
+    padding: 10px 5px;
+    font-size: 10px;
+  }
+  .caregiver-info table th:nth-child(4),
+  .caregiver-info td:nth-child(4) {
+    width: 20%;
+  }
+  .caregiver-info table td {
+    padding: 5px;
+    font-size: 14px;
+  }
+  .sort-icons img {
+    position: absolute;
+    right: -5px;
+    top: -8px;
+    width: 15px;
+    height: 15px;
+  }
+  .activity-container {
+    height: 70%;
+    width: 90%;
+  }
+  .caregiver-activity-list .caregiver-activities {
+    height: 67%;
+  }
+  .close-png {
+    height: 28px;
+    top: 20px;
+    right: 13px;
+    background-color: transparent;
+  }
+  .caregiver-name {
+    font-size: 15px;
+  }
+  .checkin-date,
+  .checkout-date {
+    font-size: 15px;
+  }
+  .caregiver-title {
+    font-size: 16px;
+  }
+  .caregiver-activity-list th,
+  .caregiver-activity-list td {
+    font-size: 13px;
+  }
 }
